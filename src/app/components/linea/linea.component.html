@@ -1,0 +1,67 @@
+
+<div class="ahorro-container">
+
+  <h2 class="titulo">Beneficios Obtenidos</h2>
+
+  <select [(ngModel)]="mesSeleccionado" (change)="capturar()">
+    <option value="0"> Selecciona un mes... </option>
+    <option *ngFor="let item of datosGrafico"> {{ item.mes }} </option>
+  </select>
+
+  <div class="chart" *ngIf="totalData != 0">
+    <canvas baseChart height="150px"
+      [data]="pieChartData"
+      [labels]="pieChartLabels"
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [colors]="pieChartColors"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+
+  <h4 class="texto-ahorro"> <span class="bigTotal"> {{ totalData | currency:'$' }} </span> Este mes <a class="red">ahorraste</a> en tus compras</h4>
+  <hr>
+
+  <table>
+    <thead>
+      <tr>
+        <th> Siempre Movil </th>
+        <th> Trayectoria </th>
+        <th> Fava Salud </th>
+        <th> Comercios Adheridos </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> {{ data[0] | currency:'$' }} </td>
+        <td> {{ data[1] | currency:'$' }} </td>
+        <td> {{ data[2] | currency:'$' }} </td>
+        <td> {{ data[3] | currency:'$' }} </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detalle-comercios">
+    <table>
+      <thead>
+        <tr>
+          <th> Fecha </th>
+          <th> Comercio </th>
+          <th> Importe </th>
+          <th> Descuento </th>
+          <th> Nro. Cupón </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> {{  }} </td>
+          <td> {{  }} </td>
+          <td> {{  | currency:'$' }} </td>
+          <td> {{  }} </td>
+          <td> {{  }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
